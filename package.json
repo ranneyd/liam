@@ -1,0 +1,19 @@
+{
+  "name": "liam",
+  "version": "1.0.0",
+  "description": "Security App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ranneyd/liam.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ranneyd/liam/issues"
+  },
+  "homepage": "https://github.com/ranneyd/liam#readme"
+}
