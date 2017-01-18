@@ -1,27 +1,37 @@
-const CompressionPlugin = require('compression-webpack-plugin');
+'use strict';
+
+var path = require('path');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+
 
 module.exports = {
-    entry: "./src/index.tsx",
-    output: {
-        filename: "bundle.js"
-    },
-    resolve: {
-        // Add '.ts' and '.tsx' as a resolvable extension.
-        extensions: ["", ".webpack.config.babel.js", ".web.js", ".ts", ".tsx", ".js"]
-    },
-    module: {
-        loaders: [
-            // all files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'
-            { test: /\.tsx?$/, loader: "ts-loader" }
-        ],
-        plugins: [
-            new CompressionPlugin({ 
-	    	asset: "[path].gz[query]"
-		algorithm: "gzip",
-		test: /\.js$|\.html$|!node_modules\/|!dist\//,
-		threshold: 1020,
-		minRatio: 0.8
-	    })
-        ]
-    }
-}
+  cache: true,
+  entry: {
+    main: './src/index.ts',
+  },
+  output: {
+    path: path.resolve(__dirname, './dist'),
+    filename: '[name].bundle.js',
+    chunkFilename: '[chunkhash].bundle.js'
+  },
+  module: {
+    rules: [{
+      // if we want to use tsx i.e. jsx we need to add (x?)
+      test: /\.ts$/,
+      exclude: /node_modules/,
+      use: [
+        {
+          loader: 'ts-loader'
+        }
+      ]
+    }]
+  },
+  plugins: [
+    new CopyWebpackPlugin([ 
+        { from: 'src/**', to: path.resolve(__dirname, './dist'), flatten: true }
+    ], {ignore: [ '*.ts']})
+  ],
+  resolve: {
+    extensions: ['.ts', '.js']
+  },
+};
