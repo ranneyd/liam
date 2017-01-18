@@ -1,7 +1,6 @@
 const CompressionPlugin = require('compression-webpack-plugin');
-const validate = require('webpack-validator');
 
-module.exports = validate({
+module.exports = {
     entry: "./src/index.tsx",
     output: {
         filename: "bundle.js"
@@ -25,4 +24,4 @@ module.exports = validate({
 	    })
         ]
     }
-})
+}
