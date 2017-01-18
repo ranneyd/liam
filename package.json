@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/ranneyd/liam/issues"
   },
-  "homepage": "https://github.com/ranneyd/liam#readme"
+  "homepage": "https://github.com/ranneyd/liam#readme",
+  "devDependencies": {
+    "compression-webpack-plugin": "^0.3.2",
+    "ts-loader": "^1.3.3",
+    "webpack": "^2.2.0",
+    "webpack-validator": "^2.3.0"
+  }
 }
