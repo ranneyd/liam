@@ -1,0 +1,39 @@
+// -----------------------------------------
+// Contains all application-wide Sass mixins.
+// -----------------------------------------
+
+// Native `url(..)` function wrapper
+// @param {String} $base - base URL for the asset
+// @param {String} $type - asset type folder (e.g. 'fonts/') 
+// @param {String} $path - asset path 
+// @return {URL}
+@function asset($base, $type, $path) {
+    @return url($base + $type + $path);
+}
+
+// Returns URL to an image based on its path
+// @param {String} $path - image path 
+// @param {String} $base - [base URL] -- base URL
+// @return {URL}
+// @require $base-url
+@function image($path, $base: $base-url) {
+    @return url($base , 'images/', $path);
+}
+
+// Returns URL to an image based on its path
+// @param {String} $path - image path 
+// @param {String} $base - [base URL] -- base URL
+// @return {URL}
+// @require $base-url
+@function font($path, $base: $base-url) {
+    @return asset($base , 'fonts/', $path);
+}
+
+// Returns color from color palette
+// @param {String} $pallete - name of palette
+// @param {String} $shade [x-light/light/base/dark/x-dark] -- shade of color
+// @return {color}
+// @require $base-url
+@function palette($palette, $shade: 'base') {
+    @return map-get(map-get($color-palettes , $palette), shade);
+}
