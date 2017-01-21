@@ -1,0 +1,83 @@
+// -------------------------------------------------------------
+// This file contains basic styles.
+// -------------------------------------------------------------
+
+// Descriptive Base Colors
+// Use name that Color for variable naming
+// url: http://chir.ag/projects/name-that-color
+// If two colors you want to use have the exact same name, on the wheel it probably means you 
+// want a different color;
+
+$black: #000;
+$white: #fff;
+$apple: #4AC32D;
+$veniceBlue: #094287;
+$ghost: #ceced3;
+$redOrange: #ff3b35;
+$pumpkin: #f46130;
+$violentViolet: #1c0752;
+$purpleHeart: #572dc2;
+$helioTrope: #a985fb;
+$saffron: #f7b131;
+$valhalla: #2b194f;
+$tiara: #C3D1D1;
+$veniceBlue: #094287;
+$pictonBlue: #40c5f1;
+$emerald: #61CE5F;
+
+// Color Palettes
+
+$color-palettes: (
+  grey: (
+    light: $mischka,
+    base: $ghost,
+    dark: #555,
+  ),
+  orange: (
+    base: $pumpkin
+  ),
+  purple: (
+    light: $helioTrope
+    base: $purpleHeart,
+    dark: $valhalla,
+    darkest: $violentViolet,
+  ),
+  green: (
+    light: $apple,
+    base: $japaneseLaurel
+  ),
+  blue: (
+    x-light: $tiara,
+    base: $veniceBlue
+  )
+);
+
+$status-colors: (
+  danger: (
+    background: $flamingo,
+    border: $redOrange
+  ),
+  warning: (
+    background: $saffron,
+    border: $webOrange
+  ),
+  info: (
+    background: $pictonBlue
+    border: $white
+  ),
+  success: (
+    background: $apple
+    border: $emerald
+  )
+//   default: {
+//     background: #a0a0a0, 
+//     border:#969696 
+//   }
+);
+
+$text-colors: (
+  text: (
+    light: $white
+  )
+);
+ 
