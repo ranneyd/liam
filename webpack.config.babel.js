@@ -27,7 +27,7 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin([ 
         { from: 'src/**', to: path.resolve(__dirname, './dist'), flatten: true }
-    ], {ignore: [ '*.ts', '*.scss']})
+    ], {ignore: [ '*.ts', '*.scss', '*.pug']})
   ],
   resolve: {
     extensions: ['.ts', '.js']

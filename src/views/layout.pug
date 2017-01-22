@@ -1,0 +1,35 @@
+-
+  title = 'Liam Chrome Extension'
+  memeContent = 'this is a super test'
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=10')
+    //- meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title #{title}
+    //- link(rel='shortcut icon', href='/favicon.png')
+    link(rel='stylesheet', href='/libs/tespa-lib-ui/sass/main.css')
+    link(rel='stylesheet', href='/main.css')
+
+  body
+    include ../ui/components/mixins.pug
+
+    .ls-container
+      h1= memeContent
+      //- if navbar !== false
+      //-   include partials/header.jade
+      //-   include partials/navbar.jade
+
+      //- not incredibly tied to the __x style, 
+      //-basically in our scss it would be &__content => parentname__content
+      .ls-container__content
+        block content
+
+        //- +lsFooter()
+
+    block scripts
+      //- script(src='https://www.google.com/recaptcha/api.js')
+      //- script(src='/js/lib/jquery-2.2.4.min.js')
+      //- script(src='/js/lib/bootstrap.min.js')
+      script(src='main.bundle.js')
