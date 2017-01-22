@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "Liam Security",
+  "description": "TODO",
+  "version": "0.1",
+
+  "browser_action": {
+    "default_icon": "logo.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "activeTab",
+    "background",
+    "https://ajax.googleapis.com/",
+    "webNavigation"
+  ]
+}
