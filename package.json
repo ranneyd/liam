@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: attempting to test in the year of our lord 2017\" && exit 1",
-    "build": "webpack",
+    "sass": "node-sass ./src/ui/sass/main.scss ./dist/main.css",
+    "pug": "pug ./src/views/popup.pug --out ./dist",
+    "build": "webpack && npm run sass && npm run pug",
     "compress": "zip -r -X $npm_package_name-$npm_package_version.zip ./{dist/*,*.js,*.html,manifest.json,*.png,*.ico}"
   },
   "repository": {
@@ -19,6 +21,9 @@
   },
   "homepage": "https://github.com/ranneyd/liam#readme",
   "devDependencies": {
+    "html-webpack-plugin": "^2.26.0",
+    "pug-cli": "^1.0.0-alpha6",
+    "node-sass": "^4.3.0",
     "ts-loader": "^1.3.3",
     "webpack": "^2.2.0"
   },

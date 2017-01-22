@@ -1,0 +1,19 @@
+// -------------------------------------------------------------
+// This file contains basic styles.
+// -------------------------------------------------------------
+
+html, body {
+    height: 100%;
+}
+// This wrapper might not want to be here.
+ls-wrapper {
+    min-height: 100%;
+    margin-bottom: -100px;
+}
+h1 {
+    color: black;
+}
+// this is a test
+// .new-container {
+//     height: 100px;
+// }
