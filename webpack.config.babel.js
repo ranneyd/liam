@@ -6,7 +6,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   cache: true,
   entry: {
-    main: './src/index.ts',
+    eventPage: './src/eventPage.ts',
   },
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -25,7 +25,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new CopyWebpackPlugin([ 
+    new CopyWebpackPlugin([
         { from: 'src/**', to: path.resolve(__dirname, './dist'), flatten: true }
     ], {ignore: [ '*.ts', '*.scss', '*.pug']})
   ],

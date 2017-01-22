@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: attempting to test in the year of our lord 2017\" && exit 1",
     "sass": "node-sass ./src/ui/sass/main.scss ./dist/main.css",
-    "pug": "pug ./src/views/popup.pug --out ./dist",
+    "sass-watch": "node-sass --watch ./src/ui/sass/main.sass ./dist/css/main.css",
+    "pug": "pug ./src/views/*.pug --out ./dist",
+    "pug-watch": "pug --watch ./src/views/*.pug --out ./dist",
     "build": "webpack && npm run sass && npm run pug",
     "compress": "zip -r -X $npm_package_name-$npm_package_version.zip ./{dist/*,*.js,*.html,manifest.json,*.png,*.ico}"
   },
