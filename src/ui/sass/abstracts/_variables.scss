@@ -15,6 +15,7 @@ $veniceBlue: #094287;
 $ghost: #ceced3;
 $redOrange: #ff3b35;
 $pumpkin: #f46130;
+$flamingo: #F2552A;
 $violentViolet: #1c0752;
 $purpleHeart: #572dc2;
 $helioTrope: #a985fb;
@@ -24,6 +25,8 @@ $tiara: #C3D1D1;
 $veniceBlue: #094287;
 $pictonBlue: #40c5f1;
 $emerald: #61CE5F;
+$japaneseLaurel: #0A6906;
+$mischka: #D1D2DD;
 
 // Color Palettes
 
@@ -37,7 +40,7 @@ $color-palettes: (
     base: $pumpkin
   ),
   purple: (
-    light: $helioTrope
+    light: $helioTrope,
     base: $purpleHeart,
     dark: $valhalla,
     darkest: $violentViolet,
@@ -59,14 +62,14 @@ $status-colors: (
   ),
   warning: (
     background: $saffron,
-    border: $webOrange
+    border: $pumpkin
   ),
   info: (
-    background: $pictonBlue
+    background: $pictonBlue,
     border: $white
   ),
   success: (
-    background: $apple
+    background: $apple,
     border: $emerald
   )
 //   default: {

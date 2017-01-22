@@ -36,7 +36,7 @@
 // @return {color}
 // @require $base-url
 @function palette($palette, $shade: 'base') {
-    @return map-get(map-get($color-palettes , $palette), shade);
+    @return map-get(map-get($color-palettes , $palette), $shade);
 }
 
 // Returns color from color palette. A very spicy function allows us to get a color and pass in a second arg
