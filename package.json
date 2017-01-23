@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: attempting to test in the year of our lord 2017\" && exit 1",
-    "sass": "node-sass ./src/ui/sass/main.scss ./dist/main.css",
+    "sass": "node-sass ./src/ui/sass/main.sass ./dist/css/main.css",
     "sass-watch": "node-sass --watch ./src/ui/sass/main.sass ./dist/css/main.css",
     "pug": "pug ./src/views/*.pug --out ./dist",
     "pug-watch": "pug --watch ./src/views/*.pug --out ./dist",
+    "webpack": "webpack",
     "build": "webpack && npm run sass && npm run pug",
+    "build-dev": "webpack && npm run sass-watch && npm run pug-watch",
     "compress": "zip -r -X $npm_package_name-$npm_package_version.zip ./{dist/*,*.js,*.html,manifest.json,*.png,*.ico}"
   },
   "repository": {
