@@ -3,13 +3,13 @@ html
   head
     meta(charset='utf-8')
     title #{title}
-    link(rel='shortcut icon', href='/favicon_' + color + '.png')
+    link(rel='shortcut icon', href='ui/favicons/favicon_' + color + '.ico')
     link(rel='stylesheet', href='css/main.css')
     script(type='text/javascript' src='js/jquery-3.1.1.min.js')
 
   body(class= color)
     div.logo
-      img.logo(src="images/logo.png")
+      img.logo(src="ui/images/logo.png")
     div.status
       h1 !{status}
       p !{statusMore}
