@@ -1,5 +1,4 @@
-class dungeonDB {
-
+class dataDungeon {
     openDatabase(callback, onUpgradeNeeded) {
         let request = indexedDB.open("liam_store", 1);
 
@@ -31,7 +30,6 @@ class dungeonDB {
             }
 
             let dataStore = db.createObjectStore('sitesAllowed', {keyPath: 'host'});
-            // Note: This is a terrible indexing strategy.
             dataStore.createIndex('host', 'host', {unique: true});
             dataStore.transaction.oncomplete = (event) => {};
         };
@@ -49,7 +47,7 @@ class dungeonDB {
             };
             
             itemStore.add(item).onsuccess = (event) => {
-                console.log("(save) adding item: " + item.host);
+                console.log("(save) added item: " + item.host);
                 callback(item);
             }
 
@@ -60,6 +58,7 @@ class dungeonDB {
         this.openDatabase((db) => {
             let request = db.transaction('sitesAllowed', 'readonly').objectStore('sitesAllowed').get(item);
             request.onsuccess = (event) => {
+                console.log("queried and got back: " + event.target.result);
                 callback(event.target.result);
             };
         }, null);
@@ -92,40 +91,51 @@ class dungeonDB {
     }
 }
 
+let database = new dataDungeon();
+
+var lastRequest = null;
+var host = null;
+
 /**
  * param 1: callable with request
  * param 2: object for filters
  * param 3: extraInfo
  */
-let database = new dungeonDB();
-
-chrome.webRequest.onBeforeRequest.addListener(
-    function(requestInfo) { 
-        let url = new URL(requestInfo.url);
+chrome.webNavigation.onBeforeNavigate.addListener((requestDetails) => 
+{
+    // NOTE: This will search for top level frames with the value -1.
+    if (requestDetails.parentFrameId != -1) {
+        return;
+    }
+    
+     let url = new URL(requestDetails.url);
         let splitUrl = url.hostname.split('.');
+        // Note: Need to consider for XX.co.uk might have to include autisticly long list.
         // Note: will be in the form xx.xxx.xxxx.com only concerned about second to last (host).
-        let host = (splitUrl[(splitUrl.length -1) - 1]);
+        host = (splitUrl[(splitUrl.length -1) - 1]);
         if (host == null) {
             return;
         }
-
         database.getItem(host, (result) => {
-            console.log("queried and got back: ");
-            console.log(result);
             if (!result) {
-                console.log("could not find entry: " + host);
-                let entry = {host: host};
-                let saved = database.saveItem(entry, (result) => {
-                    console.log("Current Database: ");
-                    database.getItems((items) => {
-                        console.log(items);
-                    });
-                });
+                let warnPage = chrome.extension.getURL('yellow.html');
+                lastRequest = requestDetails.url;
+                console.log(lastRequest);
+                chrome.tabs.update({url: warnPage});
             }
         });
-    },
-    {
-        urls: ["<all_urls>"]
-    },
+},
+    {urls: ["<all_urls>"]},
     ["blocking"]
 );
+
+var saveItem = function(uri) {
+    console.log(uri);
+    let entry = {host: host};
+    let saved = database.saveItem(entry, (entry) => {});
+    chrome.tabs.update({url: uri});
+};
+
+chrome.runtime.onInstalled.addListener((details) => {
+    // prepopulate database with top 100
+});

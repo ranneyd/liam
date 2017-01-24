@@ -11,10 +11,12 @@ class dungeonDB {
         };
 
         request.onsuccess = (event) => {
+            console.log(event);
             let db = event.target.result;
             db.onerror = (errorEvent) => {
                 console.log("(data open) error: ");
                 console.log(errorEvent);
+                // NOTE: Exit here.
             }
             if (callback) {
                 callback(db);
@@ -90,6 +92,10 @@ class dungeonDB {
             };
         }, null);
     }
+
+    deleteAll() {
+
+    }
 }
 
 /**
@@ -103,12 +109,12 @@ chrome.webRequest.onBeforeRequest.addListener(
     function(requestInfo) { 
         let url = new URL(requestInfo.url);
         let splitUrl = url.hostname.split('.');
+        // Note: take into account foreign urls.
         // Note: will be in the form xx.xxx.xxxx.com only concerned about second to last (host).
         let host = (splitUrl[(splitUrl.length -1) - 1]);
         if (host == null) {
             return;
         }
-
         database.getItem(host, (result) => {
             console.log("queried and got back: ");
             console.log(result);
