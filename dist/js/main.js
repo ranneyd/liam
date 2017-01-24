@@ -1,17 +1,18 @@
-{
-    // window.location.search is the get parameter string starting with ?. Substring(1) kills the ?
-    let getParams = window.location.search.substring(1);
-
-    let siteName = getParams.match(/sitename=([^&]*)/)[1];
-    $(".site-name").text(siteName);
+{   
+    // TODO: Make whole url.
+    $(".site-name").text(chrome.extension.getBackgroundPage().host);
 
     $("#backButton").click(function(){
-
+        console.log("back");
     });
+
     $("#goButton").click(function(){
-
+        console.log("go");
+        
     });
-    $("#saveButton").click(function(){
 
+    $("#saveButton").click(function(){
+        console.log("save");
+        chrome.extension.getBackgroundPage().saveItem(chrome.extension.getBackgroundPage().lastRequest);
     });
 }
