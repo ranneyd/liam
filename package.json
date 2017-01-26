@@ -9,8 +9,9 @@
     "sass-watch": "node-sass --watch ./src/sass/main.sass ./dist/css/main.css",
     "pug": "pug ./src/views/*.pug --out ./dist/views",
     "pug-watch": "pug --watch ./src/views/*.pug --out ./dist/views",
-    "add-static": "cp ./src/assets -R ./dist/ && cp ./src/eventPage.js ./dist/  && cp ./src/manifest.json ./dist/ && cp ./src/js -R ./dist/",
-    "build": "npm run add-static && npm run sass && npm run pug"
+    "add-static": "cp ./src/assets -R ./dist/ && cp ./src/manifest.json ./dist/ && cp ./src/js -R ./dist/",
+    "ts-prod": "tsc -m system --outFile dist/eventPage.js src/eventPage.ts",
+    "build": "npm run add-static && npm run sass && npm run pug && npm run ts-prod"
   },
   "repository": {
     "type": "git",
@@ -23,14 +24,11 @@
   },
   "homepage": "https://github.com/ranneyd/liam#readme",
   "devDependencies": {
-    "html-webpack-plugin": "^2.26.0",
     "pug-cli": "^1.0.0-alpha6",
     "node-sass": "^4.3.0",
-    "ts-loader": "^1.3.3",
-    "webpack": "^2.2.0"
   },
   "dependencies": {
-    "copy-webpack-plugin": "^4.0.1",
+    "@types/chrome": "0.0.38",
     "typescript": "^2.1.5"
   }
 }
