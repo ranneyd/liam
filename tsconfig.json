@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES5",
-    // "module": "system", Let Webpack handle modules
-    "allowSyntheticDefaultImports": true,
+  "module": "system",
     "lib": [
         "dom",
         "es2015",

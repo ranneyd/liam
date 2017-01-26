@@ -13,6 +13,10 @@
 
     $("#saveButton").click(function(){
         console.log("save");
+        console.log(chrome.extension, 'This is the chrom.extension');
+        console.log(chrome.extension.getBackgroundPage(), 'This is the chrom.extension background page');
+        console.log(chrome.extension.getBackgroundPage().lastRequest, 'This is the chrom.extension background page lastRequest');
+
         chrome.extension.getBackgroundPage().saveItem(chrome.extension.getBackgroundPage().lastRequest);
     });
 }

@@ -118,7 +118,7 @@ chrome.webNavigation.onBeforeNavigate.addListener((requestDetails) =>
         }
         database.getItem(host, (result) => {
             if (!result) {
-                let warnPage = chrome.extension.getURL('yellow.html');
+                let warnPage = chrome.extension.getURL('./views/yellow.html');
                 lastRequest = requestDetails.url;
                 console.log(lastRequest);
                 chrome.tabs.update({url: warnPage});
